@@ -11,6 +11,27 @@ $(document).ready(function() {
 
             //console.log(result);
 
+            /*Setup values of J/Q/K/A */
+
+            function pictureCardValue(){
+                switch(result['value']){
+                    case 'A':
+                    result['value'] = 0;
+                    break;
+                    case 'J':
+                    result['value'] = 11;
+                    break;
+                    case 'Q':
+                    result['value'] = 12;
+                    break;
+                    case 'K':
+                    result['value']= 13;
+                    break;
+                }
+            }
+
+            pictureCardValue();
+
             /*Initialise Array and Score/Lives Count */
 
             let cardArray = [];
@@ -29,11 +50,15 @@ $(document).ready(function() {
 
             shuffle(result)
 
-            $('#score').append(`Score = ${score} Lives = ${lives}`);
+            $('#score').append(`<b>Score = ${score} Lives = ${lives}</b>`);
             
             /*Setup with random number*/
 
-            $('#card').append(`${cardArray[0]['value']} ${cardArray[0]['suit']}`);  
+            $('#card').append(`<b>${cardArray[0]['value']}</b> of ${cardArray[0]['suit']}`);  
+
+            /*Ask Question*/
+
+            $('#question').append(`<b>Will the next card be higher or lower?</b>`);  
 
             /*Setup Function Fo onclick 'higher' button*/
 
@@ -65,17 +90,18 @@ $(document).ready(function() {
                         
                         /*Append new score/lives values*/ 
 
-                        $('#score').append(`Score = ${score} Lives = ${lives}`);
-                        $('#card').append(`${cardArray[cardArray.length -1]['value']} ${cardArray[cardArray.length -1]['suit']}`);  
+                        $('#score').append(`<b>Score = ${score} Lives = ${lives}</b>`);
+                        $('#card').append(`<b>${cardArray[cardArray.length -1]['value']}</b> of ${cardArray[cardArray.length -1]['suit']}`);  
                         
                         /*Set up game lost*/
                         if(lives === 0){
                             $('#score').empty();
                             $('#card').empty();
+                            $('#question').empty();  
                             $('#higher').hide();
                             $('#lower').hide();
 
-                            $('#score').append(`Game over`);
+                            $('#score').append(`You Lost. Game over!`);
                             
                         } 
                         
@@ -83,6 +109,7 @@ $(document).ready(function() {
                         if(score === 3){
                             $('#score').empty();
                             $('#card').empty();
+                            $('#question').empty();  
                             $('#higher').hide();
                             $('#lower').hide();
 
@@ -123,18 +150,19 @@ $(document).ready(function() {
                         }
                         
                         /*Append new score/lives values*/ 
-                        $('#score').append(`Score = ${score} Lives = ${lives}`);
-                        $('#card').append(`${cardArray[cardArray.length -1]['value']} ${cardArray[cardArray.length -1]['suit']}`);  
+                        $('#score').append(`<b>Score = ${score} Lives = ${lives}</b>`);
+                        $('#card').append(`<b>${cardArray[cardArray.length -1]['value']}</b> of ${cardArray[cardArray.length -1]['suit']}`);  
                         
 
                         /*Set up game lost*/
                         if(lives === 0){
                             $('#score').empty();
                             $('#card').empty();
+                            $('#question').empty();  
                             $('#higher').hide();
                             $('#lower').hide();
 
-                            $('#score').append(`Game over`);
+                            $('#score').append(`You Lost. Game over!`);
                             
                         } 
                         
@@ -142,6 +170,7 @@ $(document).ready(function() {
                         if(score === 3){
                             $('#score').empty();
                             $('#card').empty();
+                            $('#question').empty();  
                             $('#higher').hide();
                             $('#lower').hide();
 
@@ -168,6 +197,7 @@ $(document).ready(function() {
 
                         $('#score').empty();
                         $('#card').empty();
+                        $('#question').empty();  
                         $('#higher').show();
                         $('#lower').show();
 
@@ -178,11 +208,13 @@ $(document).ready(function() {
 
                         shuffle(result)
 
-                        $('#score').append(`Score = ${score} Lives = ${lives}`);
+                        $('#score').append(`<b>Score = ${score} Lives = ${lives}</b>`);
                         
                         /*Setup with random number again*/
 
-                        $('#card').append(`${cardArray[cardArray.length -1]['value']} ${cardArray[cardArray.length -1]['suit']}`);  
+                        $('#card').append(`<b>${cardArray[cardArray.length -1]['value']}</b> of ${cardArray[cardArray.length -1]['suit']}`);  
+
+                        $('#question').append(`<b>Will the next card be higher or lower?</b>`); 
                         
                     }
                 })
