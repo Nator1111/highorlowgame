@@ -1,0 +1,211 @@
+html {
+    height:100%;
+    /*overflow: hidden;*/
+}
+
+body {
+    height: 100%;
+}
+
+/*Navbar*/
+
+#footballFeverLogo {
+    height: 40px;
+    width: 40px;
+}
+
+.navbar.navbar-expand-lg.navbar-light.bg-light {
+    background-color: #81204C !important;
+}
+
+/*Welcome Div*/
+
+#welcomeDiv {
+    height: 100%;
+}
+
+.heroimage {
+    background-image: url('../images/background.jpg');
+    height: 100%;
+    background-size: cover;
+}
+
+.herotext{
+    text-align: center;
+    position: absolute;
+    color: white;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
+
+/*Leagues Div*/
+
+#leaguesDiv {
+    height: 100%;
+    color: black;
+}
+
+.tableTeamLogo {
+    height: 30px;
+    width: 30px;
+}
+
+thead {
+    font-weight: bold;
+}
+
+/*Teams Div*/
+
+#clubInfoDiv {
+    background-image: url('../images/burnleyfcstadium.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.teamsLogos {
+    max-height: 40px;
+}
+
+#teamsTable {
+    text-align: center;
+}
+
+#teamHeader, #teamFixturesHeader, #squadPlayerInfoHeader {
+    position: relative;
+    top: 10px;
+    left: 2%;
+    background-color: rgb(42, 179, 233);
+    color: white;
+    width: 30%;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+}
+
+.teamHeaderLogo {
+    max-width: 60px;
+}
+
+#clubInfoTableDiv {
+    height: 90%;
+}
+
+#clubInfoDiv, #teamSquad {
+    border-bottom: 2px solid #81204C;
+}
+
+#clubInfoTable, #teamFixturesTable {
+    position: relative;
+    left: 4%;
+    width: 90%;
+    height: 90%;
+}
+
+#teamSquad {
+    min-height: 300px;
+    background-color: rgb(148, 209, 245);
+}
+
+#playerSelectDiv {
+    text-align: center;
+    position: relative;
+    transform: translate(70%, 40%);
+    padding-top: 10px;
+    width: 40%;
+    background-color: #81204C;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 80px;
+}
+
+#playerSelect {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    width: 90%;
+}
+
+
+/*preloader*/
+
+#preloader {  
+    position: fixed;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    z-index: 9999;  
+    overflow: hidden;  
+    background: #81204C;
+}
+    
+#preloader:before {  
+    content: "";  
+    position: fixed;  
+    top: calc(50% - 30px);  
+    left: calc(50% - 30px);  
+    border: 6px solid white;  
+    border-top: 6px solid rgb(42, 179, 233);  
+    border-radius: 50%;  
+    width: 60px;  
+    height: 60px;  
+    -webkit-animation: animate-preloader 1s linear infinite;  
+    animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+    0% {   
+        -webkit-transform: rotate(0deg);    
+        transform: rotate(0deg);  
+    }  
+    100% {    
+        -webkit-transform: rotate(360deg);    
+        transform: rotate(360deg);  
+    }
+}
+
+@keyframes animate-preloader {  
+    0% {    
+        -webkit-transform: rotate(0deg);    
+        transform: rotate(0deg);  }  
+    
+    100% {    
+        -webkit-transform: rotate(360deg);    
+        transform: rotate(360deg);  
+    }
+}
+
+/* Mobile Screen */
+
+@media (max-width: 375px) and (max-height: 667px)
+  {
+    .tableTeamLogo, .table tr td:nth-child(5), .table tr td:nth-child(6), .table tr td:nth-child(7), .table tr td:nth-child(8), .table tr td:nth-child(9) {
+        display: none;
+    }
+
+  }
+
+  @media only screen 
+  and (max-height: 667px)
+  {
+
+   
+
+
+  }
+
+  @media (max-height: 812px) and (max-width: 375px) {
+
+  }
+
+  
+
+  @media (max-height: 640px) and (max-width: 360px) {
+     
+  }
+
+  @media (max-height: 768px) and (max-width: 1024px) {
+    
+}
+
