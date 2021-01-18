@@ -35,6 +35,8 @@ $(document).ready(function() {
 
             $('#card').append(`${cardArray[0]['value']} ${cardArray[0]['suit']}`);  
 
+            /*Setup Function Fo onclick 'higher' button*/
+
             $('#higher').on('click', function() {
 
                 $.ajax({
@@ -43,13 +45,17 @@ $(document).ready(function() {
                     dataType: 'json',
             
                     success: function(result) {
-            
+
                         shuffle(result);
 
-                        console.log(cardArray[cardArray.length -1]);
+                        //console.log(cardArray[cardArray.length -1]);
+
+                        /*Empty HTML*/
 
                         $('#score').empty();
                         $('#card').empty();
+
+                        /*Compare last two values in array and alter score/lives accrodingly*/
 
                         if(cardArray[cardArray.length -1]['value'] > cardArray[cardArray.length -2]['value']){
                             score += 1;
@@ -57,9 +63,126 @@ $(document).ready(function() {
                             lives -= 1;
                         }
                         
+                        /*Append new score/lives values*/ 
+
                         $('#score').append(`Score = ${score} Lives = ${lives}`);
                         $('#card').append(`${cardArray[cardArray.length -1]['value']} ${cardArray[cardArray.length -1]['suit']}`);  
                         
+                        /*Set up game lost*/
+                        if(lives === 0){
+                            $('#score').empty();
+                            $('#card').empty();
+                            $('#higher').hide();
+                            $('#lower').hide();
+
+                            $('#score').append(`Game over`);
+                            
+                        } 
+                        
+                        /*Set up game won*/
+                        if(score === 3){
+                            $('#score').empty();
+                            $('#card').empty();
+                            $('#higher').hide();
+                            $('#lower').hide();
+
+                            $('#score').append(`Well Done! You Won!`);
+                            
+                        }
+                    }
+                })
+                
+            });
+
+            /*Setup Function Fo onclick 'lower' button*/
+
+            $('#lower').on('click', function() {
+
+                $.ajax({
+                    url: "libs/php/getCards.php",
+                    type: 'GET',
+                    dataType: 'json',
+            
+                    success: function(result) {
+
+                        shuffle(result);
+
+                        //console.log(cardArray[cardArray.length -1]);
+
+                        /*Empty HTML*/
+
+                        $('#score').empty();
+                        $('#card').empty();
+
+                        /*Compare last two values in array and alter score/lives accrodingly*/
+
+                        if(cardArray[cardArray.length -1]['value'] < cardArray[cardArray.length -2]['value']){
+                            score += 1;
+                        } else {
+                            lives -= 1;
+                        }
+                        
+                        /*Append new score/lives values*/ 
+                        $('#score').append(`Score = ${score} Lives = ${lives}`);
+                        $('#card').append(`${cardArray[cardArray.length -1]['value']} ${cardArray[cardArray.length -1]['suit']}`);  
+                        
+
+                        /*Set up game lost*/
+                        if(lives === 0){
+                            $('#score').empty();
+                            $('#card').empty();
+                            $('#higher').hide();
+                            $('#lower').hide();
+
+                            $('#score').append(`Game over`);
+                            
+                        } 
+                        
+                        /*Set up game won*/
+                        if(score === 3){
+                            $('#score').empty();
+                            $('#card').empty();
+                            $('#higher').hide();
+                            $('#lower').hide();
+
+                            $('#score').append(`Well Done! You Won!`);
+                            
+                        }
+                    }
+                })
+                
+            });
+
+            /*Setup Reset Button*/
+
+            $('#reset').on('click', function() {
+
+                $.ajax({
+                    url: "libs/php/getCards.php",
+                    type: 'GET',
+                    dataType: 'json',
+
+                    success: function(result) {
+
+                        /*Refresh browser*/
+
+                        $('#score').empty();
+                        $('#card').empty();
+                        $('#higher').show();
+                        $('#lower').show();
+
+                        /*Re-initialise Score/Lives Count */
+
+                        score = 0;
+                        lives = 3;
+
+                        shuffle(result)
+
+                        $('#score').append(`Score = ${score} Lives = ${lives}`);
+                        
+                        /*Setup with random number again*/
+
+                        $('#card').append(`${cardArray[cardArray.length -1]['value']} ${cardArray[cardArray.length -1]['suit']}`);  
                         
                     }
                 })
@@ -70,6 +193,8 @@ $(document).ready(function() {
     })
    
 });
+
+
 
 
 
